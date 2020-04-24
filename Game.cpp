@@ -13,6 +13,10 @@ SDL_Event Game::event;
 Game::Game() {};
 Game::~Game() {};
 void Game::init(const char* title, int xPos, int yPos, int width, int height, bool fullScreen) {
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1)
+	{
+		printf("%s\n", Mix_GetError());
+	}
 	int flags = 0;
 	if (fullScreen) {
 		flags = SDL_WINDOW_FULLSCREEN;
@@ -34,7 +38,7 @@ void Game::init(const char* title, int xPos, int yPos, int width, int height, bo
 		isRunning = false;
 	}
 	player = new PlayerObject();
-	player->init("assets/player_animation.png", 0, 0, true);
+	player->init("assets/player1_animation.png", 0, 0, true);
 	enemy = new EnemyObject();
 	enemy->init("assets/enemy_animation.png");
 	explode = new ExplodeObject();
@@ -115,6 +119,7 @@ bool Game::CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2)
 void Game::Explode(SDL_Rect position) {
 	std::cout << "GameOver";
 	explode->init("assets/explosion.png", position.x, position.y, true);
+
 	while (SDL_GetTicks() - explode->start <= 150) {
 		explode->update();
 		explode->render();

@@ -4,11 +4,14 @@
 #include "Animation.h"
 #include<map>
 #include"Vector2D.h"
+#include"Sound.h"
 class GameObject {
 
 public:
 	int animIndex = 0;
 	std::map<const char*, Animation> animations;
+	std::map<const char*, Sound> sounds;
+	Mix_Chunk *sound;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 
 	GameObject() {
@@ -22,17 +25,17 @@ public:
 	virtual void update();
 	void render();
 
-	void play(const char* animName);
+	void play(const char* animName, bool audio);
 
 
 	bool animated = false;
 	int frames = 0;
 	int frameSpeed = 100;
+
 	SDL_Texture* objectTexture;
 	SDL_Rect srcRect, desRect;
 	Vector2D position,velocity;
 	int objectSpeed = 10;
 	int start;
-
 };
 

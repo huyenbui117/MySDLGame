@@ -71,8 +71,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\vsDevLib\SDL2_image-2.0.5\include;C:\vsDevLib\SDL2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\vsDevLib\SDL2_image-2.0.5\lib\x86;C:\vsDevLib\SDL2\lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\vsDevLib\SDL2_mixer-2.0.4\include;C:\vsDevLib\SDL2_image-2.0.5\include;C:\vsDevLib\SDL2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\vsDevLib\SDL2_mixer-2.0.4\lib\x86;C:\vsDevLib\SDL2_image-2.0.5\lib\x86;C:\vsDevLib\SDL2\lib\x86;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
@@ -89,13 +89,13 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\vsDevLib\SDL2_image-2.0.5\include;C:\vsDevLib\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\vsDevLib\SDL2_mixer-2.0.4\include;C:\vsDevLib\SDL2_image-2.0.5\include;C:\vsDevLib\SDL2\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\vsDevLib\SDL2_image-2.0.5\lib\x86;C:\vsDevLib\SDL2\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalLibraryDirectories>C:\vsDevLib\SDL2_mixer-2.0.4\lib\x86;C:\vsDevLib\SDL2_image-2.0.5\lib\x86;C:\vsDevLib\SDL2\lib\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalDependencies>SDL2.lib;SDL2main.lib;SDL2_image.lib;SDL2_mixer.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -159,6 +159,7 @@
     <ClInclude Include="ExplodeObject.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Sound.h" />
     <ClInclude Include="PlayerObject.h" />
     <ClInclude Include="TextureManager.h" />
     <ClInclude Include="Vector2D.h" />

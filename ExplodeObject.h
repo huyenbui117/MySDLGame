@@ -7,9 +7,9 @@ public:
 			srcRect.x = srcRect.w * static_cast<int>((SDL_GetTicks() / frameSpeed) % frames);
 		}
 		srcRect.y = animIndex * 32;
-		desRect.w = 64; desRect.h = 64;
-		desRect.x = static_cast<int>(position.x);
-		desRect.y = static_cast<int>(position.y);
+		desRect.w = 128; desRect.h = 128;
+		desRect.x = static_cast<int>(position.x-32);
+		desRect.y = static_cast<int>(position.y-32);
 	}
 };
 

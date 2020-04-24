@@ -25,12 +25,12 @@ void Enemy::handleEvents(){
 			flip = SDL_FLIP_HORIZONTAL;
 		else
 			flip = SDL_FLIP_NONE;
-		play("Walk");
+		play("Walk",false);
 		break;
 	case RIGHT:
 		velocity.x = 1;
 		lastmove = velocity;
-		play("Walk");
+		play("Walk",false);
 		break;
 	case DOWN:
 		velocity.y = 1;
@@ -38,30 +38,30 @@ void Enemy::handleEvents(){
 			flip = SDL_FLIP_HORIZONTAL;
 		else
 			flip = SDL_FLIP_NONE;
-		play("Walk");
+		play("Walk",false);
 		break;
 	case LEFT:
 		velocity.x = -1;
 		lastmove = velocity;
-		play("Walk");
+		play("Walk",false);
 		break;
 	case UNUP:
 		if (velocity.x!=0)
 		velocity.y = 0;
-		play("Idle");
+		play("Idle",false);
 		break;
 	case UNRIGHT:
 		if (velocity.y != 0)
 		velocity.x = 0;
-		play("Idle");
+		play("Idle",false);
 		break;
 	case UNDOWN:
 		if (velocity.x != 0) velocity.y = 0;
-		play("Idle");
+		play("Idle",false);
 		break;
 	case UNLEFT:
 		if (velocity.y != 0) velocity.x = 0;
-		play("Idle");
+		play("Idle",false);
 		break;
 	case SHOOT:
 		amo = new AmoObject();

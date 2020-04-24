@@ -12,9 +12,20 @@ void GameObject::init(const char* path, int x, int y, bool isAnimated) {
 	animated = isAnimated;
 	Animation idle = Animation(0, 3, 100);
 	Animation walk = Animation(1, 4, 100);
+
+	Sound idlesound = Sound("sound/idle.wav");
+	Sound walksound = Sound("sound/walk.wav");
+	Sound shootsound = Sound("sound/shoot.wav");
+
 	animations.emplace("Idle", idle);
 	animations.emplace("Walk", walk);
-	play("Idle");
+
+	sounds.emplace("Idle", idlesound);
+	sounds.emplace("Walk", walksound);
+	sounds.emplace("Shoot", shootsound);
+
+
+	play("Idle",false);
 	objectTexture = TextureManager::LoadTexture(path);
 	start = SDL_GetTicks();
 }
@@ -31,15 +42,22 @@ void GameObject::update() {
 
 	desRect.x = static_cast<int>(position.x);
 	desRect.y = static_cast<int>(position.y);
-	//std::cout << desRect.x << " " << desRect.y << "\n";
 }
 
 void GameObject::render() {
+
 	TextureManager::Draw(objectTexture, srcRect, desRect,flip);
 	SDL_RenderPresent(Game::renderer);
 }
-void GameObject::play(const char* animName) {
+void GameObject::play(const char* animName, bool audio) {
 	frames = animations[animName].frames;
 	animIndex = animations[animName].index;
 	frameSpeed = animations[animName].speed;
+	sound = sounds[animName].sound;
+	
+	if (audio) {
+		Mix_HaltChannel(-1);
+		Mix_PlayChannel(-1, sound,0);
+		std::cout << animName << "\n";
+	}
 }

@@ -10,7 +10,7 @@ void PlayerObject::handleEvents() {
 				flip = SDL_FLIP_HORIZONTAL;
 			else
 				flip = SDL_FLIP_NONE;
-			play("Walk");
+			play("Walk",true);
 			break;
 		case SDLK_DOWN:
 			velocity.y = 1;
@@ -18,21 +18,25 @@ void PlayerObject::handleEvents() {
 				flip = SDL_FLIP_HORIZONTAL;
 			else
 				flip = SDL_FLIP_NONE;
-			play("Walk");
+			play("Walk",true);
 			break;
 		case SDLK_LEFT:
 			velocity.x = -1;
 			lastmove = velocity;
 			flip = SDL_FLIP_HORIZONTAL;
 
-			play("Walk");
+			play("Walk",true);
 			break;
 		case SDLK_RIGHT:
 			velocity.x = 1;
 			lastmove = velocity;
 
-			play("Walk");
+			play("Walk",true);
 			break;
+
+		default:
+			play("Idle", true); \
+				break;
 		case SDLK_SPACE:
 			AmoObject* amo=new AmoObject();
 			amo->init("assets/amo.png", position.x, position.y, false);
@@ -53,20 +57,20 @@ void PlayerObject::handleEvents() {
 		{
 		case SDLK_UP:
 			velocity.y = 0;
-			play("Idle");
+			play("Idle",true);
 			break;
 		case SDLK_DOWN:
 			velocity.y = 0;
-			play("Idle");
+			play("Idle",true);
 			break;
 		case SDLK_LEFT:
 			velocity.x = 0;
-			play("Idle");
+			play("Idle",true);
 			flip = SDL_FLIP_NONE;
 			break;
 		case SDLK_RIGHT:
 			velocity.x = 0;
-			play("Idle");
+			play("Idle",true);
 			break;
 		}
 	}

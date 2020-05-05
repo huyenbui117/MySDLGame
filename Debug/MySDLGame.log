@@ -1,8 +1,13 @@
-﻿  GameObject.cpp
-C:\Users\65905\Desktop\MySDLGame\GameObject.cpp(7,25): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\65905\Desktop\MySDLGame\GameObject.cpp(7,22): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\65905\Desktop\MySDLGame\GameObject.cpp(33,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\65905\Desktop\MySDLGame\GameObject.cpp(34,73): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\65905\Desktop\MySDLGame\GameObject.cpp(35,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-C:\Users\65905\Desktop\MySDLGame\GameObject.cpp(36,75): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+﻿  EnemyObject.cpp
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(6,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(13,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(68,51): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(68,39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(83,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(84,63): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(85,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(86,64): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(118,16): warning C4018: '<': signed/unsigned mismatch
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(125,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(135,20): warning C4018: '<': signed/unsigned mismatch
   MySDLGame.vcxproj -> C:\Users\65905\Desktop\MySDLGame\Debug\MySDLGame.exe

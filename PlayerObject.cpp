@@ -35,7 +35,7 @@ void PlayerObject::handleEvents() {
 			break;
 
 		default:
-			play("Idle", true); \
+			play("Idle", false);
 				break;
 		case SDLK_SPACE:
 			AmoObject* amo=new AmoObject();
@@ -57,21 +57,23 @@ void PlayerObject::handleEvents() {
 		{
 		case SDLK_UP:
 			velocity.y = 0;
-			play("Idle",true);
+			play("Idle",false);
 			break;
 		case SDLK_DOWN:
 			velocity.y = 0;
-			play("Idle",true);
+			play("Idle",false);
 			break;
 		case SDLK_LEFT:
 			velocity.x = 0;
-			play("Idle",true);
+			play("Idle",false);
 			flip = SDL_FLIP_NONE;
 			break;
 		case SDLK_RIGHT:
 			velocity.x = 0;
-			play("Idle",true);
+			play("Idle",false);
 			break;
+		case SDLK_SPACE:
+			play("Idle", false);
 		}
 	}
 }

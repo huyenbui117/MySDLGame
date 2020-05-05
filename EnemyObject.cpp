@@ -2,7 +2,7 @@
 
 void Enemy::handleEvents(){
 	srand(SDL_GetTicks());
-	type = rand() % 200;
+	type = rand() % 100;
 	int tmpx = position.x + static_cast<int>(velocity.x * objectSpeed);
 	if (tmpx > 0 && tmpx < Game::SCREEN_WIDTH - desRect.x);
 	else

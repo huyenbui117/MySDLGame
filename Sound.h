@@ -12,4 +12,8 @@ public:
 			printf("%s\n", Mix_GetError());
 		}
 	}
+	void play() {
+		Mix_HaltChannel(-1);
+ 		Mix_PlayChannel(-1, sound, 0);
+	}
 };

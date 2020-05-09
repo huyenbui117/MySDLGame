@@ -2,6 +2,8 @@
 #include"GameObject.h"
 #include<vector>
 #include"AmoObject.h"
+#include"TextureManager.h"
+#include<string>
 #include<time.h>
 class Enemy:public GameObject{
 public:

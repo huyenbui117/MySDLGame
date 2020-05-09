@@ -40,8 +40,9 @@ void Game::init(const char* title, int xPos, int yPos, int width, int height, bo
 	player = new PlayerObject();
 	player->init("assets/player1_animation.png", 0, 0, true);
 	enemy = new EnemyObject();
-	enemy->init("assets/enemy_animation.png");
+	enemy->init("assets/enemy2_animation.png");
 	explode = new ExplodeObject();
+	explode->health = -1;
 }
 void Game::handleEvents() {
 	SDL_PollEvent(&event);
@@ -117,9 +118,9 @@ bool Game::CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2)
 	return false;
 }
 void Game::Explode(SDL_Rect position) {
-	std::cout << "GameOver";
 	explode->init("assets/explosion.png", position.x, position.y, true);
 
+	explode->play("Point", true);
 	while (SDL_GetTicks() - explode->start <= 150) {
 		explode->update();
 		explode->render();
@@ -150,7 +151,8 @@ void Game::render() {
 		enemy->enemyList.at(j)->render();
 		Enemy* enemyTmp = enemy->enemyList.at(j);
 		if (CheckCollision(player->desRect, enemyTmp->desRect)) {
-			Game::Explode(player->desRect);
+			Game::Explode(player->desRect); 
+			isRunning = false;
 		}
 		if (enemyTmp->amo != NULL) {
 			if (enemyTmp->amo->is_moving == true) {
@@ -158,21 +160,30 @@ void Game::render() {
 				enemyTmp->amo->update();
 			}
 			if (CheckCollision(player->desRect, enemyTmp->amo->desRect)) {
+				player->health--;
 				Game::Explode(player->desRect);
+				player->play("Hit",true);
+				delete enemyTmp->amo;
 			}
 		}
 		for (int p_amo = 0; p_amo < player->amoList.size(); p_amo++) {
 			if (player->amoList.at(p_amo)) {
 				bool is_col = CheckCollision(player->amoList.at(p_amo)->desRect, enemyTmp->desRect);
 				if (is_col) {
-					Game::Explode(enemyTmp->desRect);
-					std::cout << "Point!\n";
 					player->amoList.erase(player->amoList.begin() + p_amo);
-					enemy->enemyList.erase(enemy->enemyList.begin() + j);     
-					enemy->start = SDL_GetTicks();
+					enemyTmp->health--;
 				}
 			}
 		}
+		if (enemyTmp->health == 0) {
+			Game::Explode(enemyTmp->desRect);
+			enemy->enemyList.erase(enemy->enemyList.begin() + j);
+			enemy->start = SDL_GetTicks();
+		}
+	}
+	if (player->health == 0) {
+		Game::Explode(player->desRect);
+		isRunning = false;
 	}
 	if (enemy->enemyList.size() < enemy->quantity) {
 		if (SDL_GetTicks()-enemy->start>=1000)

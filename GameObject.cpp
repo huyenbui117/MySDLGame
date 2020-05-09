@@ -1,9 +1,12 @@
 #include "GameObject.h"
 #include"TextureManager.h"
+#include <string>
 #define OBJECT_HEIGHT 64
 #define OBJECT_WIDTH 64
 void GameObject::init(const char* path, int x, int y, bool isAnimated) {
 	objectTexture = TextureManager::LoadTexture(path);
+	healthTexture = TextureManager::LoadTexture("assets/5.png");
+
 	position = Vector2D(x, y);
 	velocity = Vector2D(0, 0);
 	srcRect = { 0,0,32,32 };
@@ -16,6 +19,8 @@ void GameObject::init(const char* path, int x, int y, bool isAnimated) {
 	Sound idlesound = Sound("sound/idle.wav");
 	Sound walksound = Sound("sound/walk.wav");
 	Sound shootsound = Sound("sound/shoot.wav");
+	Sound pointsound = Sound("sound/point.wav");
+	Sound hitsound = Sound("sound/hit.wav");
 
 	animations.emplace("Idle", idle);
 	animations.emplace("Walk", walk);
@@ -23,6 +28,8 @@ void GameObject::init(const char* path, int x, int y, bool isAnimated) {
 	sounds.emplace("Idle", idlesound);
 	sounds.emplace("Walk", walksound);
 	sounds.emplace("Shoot", shootsound);
+	sounds.emplace("Point", pointsound);
+	sounds.emplace("Hit", hitsound);
 
 
 	play("Idle",false);
@@ -42,10 +49,17 @@ void GameObject::update() {
 
 	desRect.x = static_cast<int>(position.x);
 	desRect.y = static_cast<int>(position.y);
+
+	std::string path = "assets/" + std::to_string(health) + ".png";
+	healthTexture = TextureManager::LoadTexture(path.c_str());
 }
 
 void GameObject::render() {
-
+	SDL_Rect healthRect = desRect;
+	healthRect.y -= 20;
+	if (health > 0) {
+		TextureManager::Draw(healthTexture, {0,0,32,32}, healthRect, SDL_FLIP_NONE);
+	}
 	TextureManager::Draw(objectTexture, srcRect, desRect,flip);
 	SDL_RenderPresent(Game::renderer);
 }
@@ -53,11 +67,7 @@ void GameObject::play(const char* animName, bool audio) {
 	frames = animations[animName].frames;
 	animIndex = animations[animName].index;
 	frameSpeed = animations[animName].speed;
-	sound = sounds[animName].sound;
 	
-	if (audio) {
-		Mix_HaltChannel(-1);
-		Mix_PlayChannel(-1, sound,0);
-		std::cout << animName << "\n";
-	}
+	if (audio) sounds[animName].play();
+	
 }

@@ -1,9 +1,10 @@
 #include "AmoObject.h"
 
-AmoObject::AmoObject(){
+AmoObject::AmoObject() {
 	position = Vector2D(0, 0);
 	is_moving = false;
 	objectSpeed = 30;
+	health = -1;
 }
 AmoObject::~AmoObject() {}
 

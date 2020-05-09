@@ -1,5 +1,4 @@
 #include "EnemyObject.h"
-
 void Enemy::handleEvents(){
 	srand(SDL_GetTicks());
 	type = rand() % 100;
@@ -66,7 +65,7 @@ void Enemy::handleEvents(){
 	case SHOOT:
 		amo = new AmoObject();
 		amo->init("assets/amo.png", position.x, position.y, false);
-		amo->objectSpeed = 10;
+		amo->objectSpeed = 30;
 		amo->position.x += 20;
 		amo->is_moving = true;
 
@@ -91,6 +90,10 @@ void Enemy::update() {
 
 	desRect.x = static_cast<int>(position.x);
 	desRect.y = static_cast<int>(position.y);
+
+
+	std::string path = "assets/" + std::to_string(health) + ".png";
+	healthTexture = TextureManager::LoadTexture(path.c_str());
 	//std::cout << desRect.x << " " << desRect.y << "\n";
 }
 

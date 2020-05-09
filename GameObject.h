@@ -11,7 +11,6 @@ public:
 	int animIndex = 0;
 	std::map<const char*, Animation> animations;
 	std::map<const char*, Sound> sounds;
-	Mix_Chunk *sound;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 
 	GameObject() {
@@ -33,9 +32,11 @@ public:
 	int frameSpeed = 100;
 
 	SDL_Texture* objectTexture;
+	SDL_Texture* healthTexture;
 	SDL_Rect srcRect, desRect;
 	Vector2D position,velocity;
 	int objectSpeed = 10;
 	int start;
+	int health=5;
 };
 

@@ -120,11 +120,12 @@ bool Game::CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2)
 void Game::Explode(SDL_Rect position) {
 	explode->init("assets/explosion.png", position.x, position.y, true);
 
-	explode->play("Point", true);
 	while (SDL_GetTicks() - explode->start <= 150) {
 		explode->update();
 		explode->render();
 	}
+
+	explode->play("Point", true);
 }
 void Game::update() {
 	player->update();

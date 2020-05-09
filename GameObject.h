@@ -13,12 +13,11 @@ public:
 	std::map<const char*, Sound> sounds;
 	SDL_RendererFlip flip = SDL_FLIP_NONE;
 
-	GameObject() {
-	}
+	GameObject() {}
 	~GameObject() {
 		SDL_DestroyTexture(objectTexture);
 		objectTexture = NULL;
-	};
+	}
 	void init(const char* texture, int x, int y, bool isAnimated);
 
 	virtual void update();

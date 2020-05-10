@@ -8,11 +8,13 @@
 class Enemy:public GameObject{
 public:
 	enum enemyEvent { UP, RIGHT, DOWN, LEFT, SHOOT, UNUP, UNRIGHT, UNDOWN, UNLEFT };
-	Enemy() {};
+	Enemy() {
+		health = 4;
+	};
 	~Enemy() {};
 	void handleEvents();
 	void update() override;
-	AmoObject* amo;
+	std::vector<AmoObject*> amoList;
 	Vector2D lastmove;
 	int type = 6;
 };

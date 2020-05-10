@@ -1,6 +1,7 @@
 ﻿  Game.cpp
-C:\Users\65905\Desktop\MySDLGame\Game.cpp(138,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\65905\Desktop\MySDLGame\Game.cpp(151,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\65905\Desktop\MySDLGame\Game.cpp(170,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\65905\Desktop\MySDLGame\Game.cpp(189,30): warning C4018: '<': signed/unsigned mismatch
+C:\Users\65905\Desktop\MySDLGame\Game.cpp(177,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\65905\Desktop\MySDLGame\Game.cpp(190,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\65905\Desktop\MySDLGame\Game.cpp(197,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\65905\Desktop\MySDLGame\Game.cpp(211,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\65905\Desktop\MySDLGame\Game.cpp(230,30): warning C4018: '<': signed/unsigned mismatch
   MySDLGame.vcxproj -> C:\Users\65905\Desktop\MySDLGame\Debug\MySDLGame.exe

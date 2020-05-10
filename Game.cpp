@@ -8,13 +8,14 @@
 EnemyObject* enemy;
 PlayerObject* player;
 ExplodeObject* explode;
+GameObject* background;
+GameObject* menu;
 SDL_Renderer* Game::renderer = nullptr;
 SDL_Event Game::event;
 Game::Game() {};
 Game::~Game() {};
 void Game::init(const char* title, int xPos, int yPos, int width, int height, bool fullScreen) {
-	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1)
-	{
+	if (Mix_OpenAudio(44100, MIX_DEFAULT_FORMAT, 2, 2048) == -1){
 		printf("%s\n", Mix_GetError());
 	}
 	int flags = 0;
@@ -37,13 +38,24 @@ void Game::init(const char* title, int xPos, int yPos, int width, int height, bo
 	else {
 		isRunning = false;
 	}
+	menu = new GameObject();
 	player = new PlayerObject();
-	player->init("assets/player1_animation.png", 0, 0, true);
+	background = new GameObject();
 	enemy = new EnemyObject();
-	enemy->init("assets/enemy2_animation.png");
 	explode = new ExplodeObject();
+}
+void Game::setup(){
+	menuDisplay = true;
+	gameOver = false;
+	menu->init("assets/menu.png", 0, 0, false);
+	background->init("assets/background.png", 0, 0, false);
+	background->srcRect = { 0,0,1026,1077 };
+	background->desRect = { 0,0,Game::SCREEN_WIDTH,Game::SCREEN_HEIGHT };
+	player->init("assets/player_animation.png", 0, 0, true);
+	enemy->init("assets/enemy2_animation.png");
 	explode->health = -1;
 }
+
 void Game::handleEvents() {
 	SDL_PollEvent(&event);
 	
@@ -56,6 +68,31 @@ void Game::handleEvents() {
 	}
 	player->handleEvents();
 	enemy->handleEvents();
+}
+void Game::Menu() {
+	int x=0, y=0;
+	menu->health = -1;
+	menu->srcRect = { 0,0,800,600 };
+	menu->desRect = { 0,0,800,600 };
+	SDL_RenderClear(renderer);
+	menu->render();
+	SDL_PollEvent(&event);
+	switch (event.type) {
+	case SDL_QUIT:
+		menuDisplay = false;
+		isRunning = false;
+		break;
+	case SDL_MOUSEBUTTONDOWN:
+		x = event.button.x;
+		y = event.button.y;
+		break;
+	case SDL_MOUSEBUTTONUP:
+		x = 0; y = 0;
+	}
+	if (x > 300 && x < 500) {
+		if (y > 280 && y < 330) menuDisplay = false;
+
+	}
 }
 bool Game::CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2)
 {
@@ -132,7 +169,9 @@ void Game::update() {
 	enemy->update();
 }
 void Game::render() {
+	
 	SDL_RenderClear(renderer);
+	background->render();
 	player->render();
 	if (player->amoList.size() != 0) {
 		for (int i = 0; i < player->amoList.size(); i++) {
@@ -153,18 +192,20 @@ void Game::render() {
 		Enemy* enemyTmp = enemy->enemyList.at(j);
 		if (CheckCollision(player->desRect, enemyTmp->desRect)) {
 			Game::Explode(player->desRect); 
-			isRunning = false;
+			gameOver = true;
 		}
-		if (enemyTmp->amo != NULL) {
-			if (enemyTmp->amo->is_moving == true) {
-				enemyTmp->amo->render();
-				enemyTmp->amo->update();
-			}
-			if (CheckCollision(player->desRect, enemyTmp->amo->desRect)) {
-				player->health--;
-				Game::Explode(player->desRect);
-				player->play("Hit",true);
-				delete enemyTmp->amo;
+		for (int i = 0; i < enemyTmp->amoList.size(); i++) {
+			if (enemyTmp->amoList.at(i) != NULL) {
+				if (enemyTmp->amoList.at(i)->is_moving == true) {
+					enemyTmp->amoList.at(i)->render();
+					enemyTmp->amoList.at(i)->update();
+				}
+				if (CheckCollision(player->desRect, enemyTmp->amoList.at(i)->desRect)) {
+					player->health--;
+					Game::Explode(player->desRect);
+					player->play("Hit", true);
+					enemyTmp->amoList.erase(enemyTmp->amoList.begin() + i);
+				}
 			}
 		}
 		for (int p_amo = 0; p_amo < player->amoList.size(); p_amo++) {
@@ -184,7 +225,7 @@ void Game::render() {
 	}
 	if (player->health == 0) {
 		Game::Explode(player->desRect);
-		isRunning = false;
+		gameOver = true;
 	}
 	if (enemy->enemyList.size() < enemy->quantity) {
 		if (SDL_GetTicks()-enemy->start>=1000)

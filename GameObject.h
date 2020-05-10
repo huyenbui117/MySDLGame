@@ -16,7 +16,7 @@ public:
 	GameObject() {}
 	~GameObject() {
 		SDL_DestroyTexture(objectTexture);
-		objectTexture = NULL;
+		objectTexture=NULL;
 	}
 	void init(const char* texture, int x, int y, bool isAnimated);
 

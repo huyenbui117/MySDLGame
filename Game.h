@@ -10,7 +10,10 @@ public:
 	~Game();
 	void init(const char* title, int xPos, int yPos, int width, int height, bool fullScreen);
 
+	void setup();
+
 	void handleEvents();
+	void Menu();
 	bool CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2);
 	void Explode(SDL_Rect position);
 	void update();
@@ -23,8 +26,9 @@ public:
 
 	static const int SCREEN_WIDTH = 800;
 	static const int SCREEN_HEIGHT = 640;
-private:
+	bool menuDisplay;
 
+	bool gameOver;
 	bool isRunning;
 	SDL_Window* window;
 };

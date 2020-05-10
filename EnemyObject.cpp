@@ -1,7 +1,7 @@
 #include "EnemyObject.h"
 void Enemy::handleEvents(){
 	srand(SDL_GetTicks());
-	type = rand() % 100;
+	type = rand() % 50;
 	int tmpx = position.x + static_cast<int>(velocity.x * objectSpeed);
 	if (tmpx > 0 && tmpx < Game::SCREEN_WIDTH - desRect.x);
 	else
@@ -63,7 +63,7 @@ void Enemy::handleEvents(){
 		play("Idle",false);
 		break;
 	case SHOOT:
-		amo = new AmoObject();
+		AmoObject *amo = new AmoObject();
 		amo->init("assets/amo.png", position.x, position.y, false);
 		amo->objectSpeed = 30;
 		amo->position.x += 20;
@@ -75,6 +75,7 @@ void Enemy::handleEvents(){
 		else amo->flip = SDL_FLIP_NONE;
 
 		amo->update();
+		amoList.push_back(amo);
 		break;
 	}
 }

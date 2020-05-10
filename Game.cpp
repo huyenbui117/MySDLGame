@@ -52,7 +52,12 @@ void Game::setup(){
 	background->srcRect = { 0,0,1026,1077 };
 	background->desRect = { 0,0,Game::SCREEN_WIDTH,Game::SCREEN_HEIGHT };
 	player->init("assets/player_animation.png", 0, 0, true);
+	while (enemy->enemyList.size()>0)
+	{
+		enemy->enemyList.pop_back();
+	}
 	enemy->init("assets/enemy2_animation.png");
+
 	explode->health = -1;
 }
 
@@ -91,7 +96,10 @@ void Game::Menu() {
 	}
 	if (x > 300 && x < 500) {
 		if (y > 280 && y < 330) menuDisplay = false;
-
+		if (y > 450 && y < 500) {
+			menuDisplay = false;
+			isRunning = false;
+		}
 	}
 }
 bool Game::CheckCollision(const SDL_Rect& object1, const SDL_Rect& object2)

@@ -1,7 +1,20 @@
-﻿  Game.cpp
-C:\Users\65905\Desktop\MySDLGame\Game.cpp(177,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\65905\Desktop\MySDLGame\Game.cpp(190,20): warning C4018: '<': signed/unsigned mismatch
-C:\Users\65905\Desktop\MySDLGame\Game.cpp(197,21): warning C4018: '<': signed/unsigned mismatch
-C:\Users\65905\Desktop\MySDLGame\Game.cpp(211,29): warning C4018: '<': signed/unsigned mismatch
-C:\Users\65905\Desktop\MySDLGame\Game.cpp(230,30): warning C4018: '<': signed/unsigned mismatch
+﻿  EnemyObject.cpp
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(5,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(12,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(67,51): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(67,39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(83,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(84,63): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(85,11): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(86,64): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(122,16): warning C4018: '<': signed/unsigned mismatch
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(129,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\65905\Desktop\MySDLGame\EnemyObject.cpp(139,20): warning C4018: '<': signed/unsigned mismatch
+  Game.cpp
+C:\Users\65905\Desktop\MySDLGame\Game.cpp(185,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\65905\Desktop\MySDLGame\Game.cpp(198,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\65905\Desktop\MySDLGame\Game.cpp(205,21): warning C4018: '<': signed/unsigned mismatch
+C:\Users\65905\Desktop\MySDLGame\Game.cpp(219,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\65905\Desktop\MySDLGame\Game.cpp(238,30): warning C4018: '<': signed/unsigned mismatch
+  Generating Code...
   MySDLGame.vcxproj -> C:\Users\65905\Desktop\MySDLGame\Debug\MySDLGame.exe

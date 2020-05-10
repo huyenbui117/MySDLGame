@@ -8,9 +8,7 @@
 class Enemy:public GameObject{
 public:
 	enum enemyEvent { UP, RIGHT, DOWN, LEFT, SHOOT, UNUP, UNRIGHT, UNDOWN, UNLEFT };
-	Enemy() {
-		health = 4;
-	};
+	Enemy() {}
 	~Enemy() {};
 	void handleEvents();
 	void update() override;

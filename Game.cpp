@@ -52,6 +52,7 @@ void Game::setup(){
 	background->srcRect = { 0,0,1026,1077 };
 	background->desRect = { 0,0,Game::SCREEN_WIDTH,Game::SCREEN_HEIGHT };
 	player->init("assets/player_animation.png", 0, 0, true);
+	player->health = 5;
 	while (enemy->enemyList.size()>0)
 	{
 		enemy->enemyList.pop_back();
@@ -90,6 +91,7 @@ void Game::Menu() {
 	case SDL_MOUSEBUTTONDOWN:
 		x = event.button.x;
 		y = event.button.y;
+		menu->play("Hit", true);
 		break;
 	case SDL_MOUSEBUTTONUP:
 		x = 0; y = 0;

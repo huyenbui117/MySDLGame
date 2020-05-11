@@ -1,2 +1,0 @@
-C:\Users\65905\Desktop\MySDLGame\Debug\MySDLGame.exe
-C:\Users\65905\Desktop\MySDLGame\Debug\MySDLGame.pdb
